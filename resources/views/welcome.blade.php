@@ -9,6 +9,7 @@
                 <tr>
                     <th scope="col">Id</th>
                     <th scope="col">Check</th>
+                    <th scope="col">Pseudo</th>
                     <th scope="col">Name</th>
                     <th scope="col">Surname</th>
                     <th scope="col">Age</th>
@@ -18,10 +19,11 @@
                 <tbody>
                     <tr>
                         <td>{{Auth::id()}}</td>
-                        <td>{{Auth::check()}}</td>
-                        <td>{{$users->name}}</td>
-                        <td>{{$users->surname}}</td>
-                        <td>{{$users->age}}</td>
+                        <td>{{Auth::check() ? 'Il y a un user' : ''}}</td>
+                        <td>{{$users->pseudo}}</td>
+                        <td>{{$users->profils->name}}</td>
+                        <td>{{$users->profils->surname}}</td>
+                        <td>{{$users->profils->age}}</td>
                         <td>{{$users->email}}</td>
                     </tr>
                 </tbody>
@@ -34,7 +36,7 @@
             <thead>
             <tr>
                 <th scope="col">Id</th>
-                <th scope="col">Check</th>
+                <th scope="col">Pseudo</th>
                 <th scope="col">Name</th>
                 <th scope="col">Surname</th>
                 <th scope="col">Age</th>
@@ -45,9 +47,10 @@
                 @foreach ($usersAll as $item)
                     <tr>
                         <td>{{$item->id}}</td>
-                        <td>{{$item->name}}</td>
-                        <td>{{$item->surname}}</td>
-                        <td>{{$item->age}}</td>
+                        <td>{{$item->pseudo}}</td>
+                        <td>{{$item->profils->name}}</td>
+                        <td>{{$item->profils->surname}}</td>
+                        <td>{{$item->profils->age}}</td>
                         <td>{{$item->email}}</td>
                     </tr>
                 @endforeach
